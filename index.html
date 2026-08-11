@@ -1,1241 +1,805 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gurpreet Singh — Graphic &amp; UI/UX Designer</title>
 
-    <title>Creative Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  --bg:#0a0a0b;
+  --surface:#131316;
+  --line:rgba(255,255,255,0.09);
+  --text:#f2f2f0;
+  --muted:#8d8d95;
+  --cyan:#2cd3f7;
+  --lime:#d7ff00;
+  --coral:#ff6b4a;
+  --coral-soft:rgba(255,107,74,0.14);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.display{font-family:'Space Grotesk',sans-serif;}
 
-    <!-- Remix Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+::selection{background:var(--lime);color:#0a0a0b;}
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="assets">
-    <link rel="stylesheet" href="banner/">
-    
-    <style>
-        @media only screen and (min-width: 320px) and (max-width: 767px) {
-            a.text-3xl.font-black.tracking-widest {
-    font-size: 20px !important;
+/* ---- gradient text ---- */
+.grad{
+  background:linear-gradient(100deg,var(--cyan),var(--lime));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-h1.hero-title.mt-6 {
-    margin-top: 12px;
+
+/* ---- nav ---- */
+.nav-glass{
+  background:rgba(10,10,11,0.7);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
 }
-a.btn-one {
-    width: 100% !important;
+.menu-link{position:relative;color:var(--muted);font-size:14px;letter-spacing:.03em;transition:.25s;}
+.menu-link:hover{color:var(--text);}
+.menu-link::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--lime);transition:.3s;}
+.menu-link:hover::after{width:100%;}
+
+/* ---- hero ---- */
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 700px 500px at 85% 10%, rgba(44,211,247,0.14), transparent 60%),
+    radial-gradient(ellipse 500px 450px at 60% 75%, rgba(255,107,74,0.10), transparent 55%),
+    radial-gradient(ellipse 600px 500px at 5% 90%, rgba(215,255,0,0.07), transparent 55%);
 }
-a.btn-two {
-    width: 100% !important;
+
+/* ---- full-bleed background name ---- */
+.hero-bigtype{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:100%;text-align:center;pointer-events:none;user-select:none;
+  font-family:'Space Grotesk',sans-serif;font-weight:700;
+  font-size:clamp(90px,15vw,260px);line-height:1;
+  white-space:nowrap;letter-spacing:-0.02em;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,0.07);
+  z-index:0;
 }
-.mt-12.flex.gap-5.flex-wrap {
-    margin-top: 18px;
+@media(max-width:768px){
+  .hero-bigtype{display:none;}
 }
-br {
-    display: none;
+
+/* ---- availability badge ---- */
+.avail-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 16px 8px 12px;border-radius:100px;
+  border:1px solid var(--line);background:rgba(255,255,255,0.03);
+  font-size:12.5px;color:var(--muted);width:fit-content;
 }
-p.max-w-xl.mt-8.text-gray-300.leading-8 {
-    margin-top: 10px !important;
-    line-height: 24px;
+.avail-dot{width:7px;height:7px;border-radius:50%;background:#3ee06b;position:relative;flex-shrink:0;}
+.avail-dot::after{
+  content:"";position:absolute;inset:-4px;border-radius:50%;
+  background:#3ee06b;opacity:.5;animation:pulse 1.8s infinite;
 }
-.min-h-screen {
-    min-height: auto;
-    padding-top: 135px;
-    padding-bottom: 70px;
+@keyframes pulse{
+  0%{transform:scale(1);opacity:.5;}
+  70%{transform:scale(2.3);opacity:0;}
+  100%{transform:scale(2.3);opacity:0;}
 }
-.collsapse {
-    background: #2b2b2b;
-    width: 100% !important;
-    margin: auto;
-    padding: 15px;
-    border-radius: 20px !important;
+
+/* ---- hero visual stack ---- */
+.hero-visual{position:relative;height:520px;}
+.hero-photo-frame{
+  position:absolute;border-radius:20px;overflow:hidden;border:1px solid var(--line);
+  box-shadow:0 40px 80px rgba(0,0,0,0.55);background:#0e0e10;
 }
-        }
-        /* .portfolio-item img {
-    height: 420px;
-    object-position: center;
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+.hp-1{width:78%;top:0;right:0;height:400px;transform:rotate(2.5deg);z-index:2;}
+.hp-2{width:52%;bottom:0;left:0;height:230px;transform:rotate(-4deg);z-index:3;border-color:rgba(255,107,74,0.25);}
+
+.float-card{
+  position:absolute;z-index:4;
+  background:rgba(19,19,22,0.85);backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:16px;
+  padding:16px 20px;box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  display:flex;align-items:center;gap:12px;
+}
+.float-card .num{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;line-height:1;}
+.float-card .lbl{font-size:11.5px;color:var(--muted);margin-top:2px;}
+.float-card .ic{
+  width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;
+}
+.fc-1{top:26px;left:-6%;}
+.fc-1 .ic{background:var(--coral-soft);color:var(--coral);}
+.fc-2{bottom:34px;right:-4%;}
+.fc-2 .ic{background:rgba(44,211,247,0.14);color:var(--cyan);}
+.fc-3{top:48%;left:38%;transform:translateY(-50%);}
+.fc-3 .ic{background:rgba(215,255,0,0.14);color:var(--lime);}
+
+@media(max-width:1024px){
+  .hero-visual{height:420px;margin-top:60px;}
+  .fc-1{left:0;}
+  .fc-2{right:0;}
+}
+@media(max-width:640px){
+  .float-card{padding:12px 14px;}
+  .float-card .num{font-size:20px;}
+  .hp-1{height:280px;}
+  .hp-2{height:170px;}
+}
+.grain{
+  position:absolute;inset:0;opacity:.035;pointer-events:none;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.hero-index{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:13px;letter-spacing:.35em;color:var(--muted);
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 32px;border-radius:100px;
+  background:var(--text);color:#0a0a0b;font-weight:600;font-size:14px;
+  transition:.3s;
+}
+.btn-primary:hover{background:var(--lime);transform:translateY(-2px);}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 32px;border-radius:100px;
+  border:1px solid var(--line);color:var(--text);font-weight:500;font-size:14px;
+  transition:.3s;
+}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan);}
+
+/* ---- section label ---- */
+.eyebrow{
+  font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+}
+.section-title{font-size:clamp(28px,4vw,44px);font-weight:600;line-height:1.15;}
+
+/* ---- featured banner ---- */
+.featured-card{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#0e0e10;}
+.featured-card img {
+    width: 100%;
+    height: 520px;
     object-fit: cover;
-    transition: .7s;
-} */
-        h1.hero-title.mt-6 {
-    background: linear-gradient(90deg, #26d1ff, #d7ff00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    display: block;
+    transition: transform .8s cubic-bezier(.2,.8,.2,1);
+    object-position: top;
 }
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top right, #2cd3f747, transparent 45%), radial-gradient(circle at bottom left, #00feff54, transparent 40%), #090909;
-}
-a.btn-one {
-    background: #fff;
-    padding: 15px;
-    width: 30%;
-    
-    text-align: center;
-    border-radius: 100px;
-      transition: 0.3s;
-}
-a.btn-two {
-    background: #fff;
-    padding: 15px;
-    width: 30%;
-    color: #000;
-    text-align: center;
-    border-radius: 100px;
-      transition: 0.3s;
-}
-a.btn-one:hover {
-   background: #000;
-}
-a.btn-two {
-    background: #2cd3f7;
-  
+.featured-card:hover img{transform:scale(1.03);}
+.featured-overlay{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:40px;background:linear-gradient(to top, rgba(0,0,0,0.85), transparent 55%);
 }
 
-/* hover css */
-.btn-one {
-    position: relative;
-    display: inline-block;
-    padding: 14px 30px;
-    color: #fff;
-    text-decoration: none;
-    background: #0c0c0c;
-    border: 1px solid rgba(255,255,255,0.25);
-    overflow: hidden;
-    transition: 0.3s ease;
-    z-index: 1;
+/* ---- selected work: editorial index list ---- */
+.work-row{
+  display:grid;grid-template-columns:60px 1fr auto;align-items:center;
+  gap:28px;padding:34px 0;border-top:1px solid var(--line);
+  cursor:pointer;position:relative;transition:.25s;
+}
+.work-row:last-child{border-bottom:1px solid var(--line);}
+.work-row:hover{padding-left:12px;}
+.work-num{font-family:'Space Grotesk',sans-serif;color:var(--muted);font-size:14px;}
+.work-name{font-size:clamp(22px,3vw,34px);font-weight:600;transition:.25s;}
+.work-row:hover .work-name{color:var(--cyan);}
+.work-meta{color:#c0f921;font-size:13px;display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap;max-width:280px;text-align:right;}
+.work-tag{border:1px solid rgb(191 247 255 / 29%);padding:4px 10px;border-radius:100px;font-size:11px;white-space:nowrap;}
+.work-preview{
+  position:fixed;top:0;left:0;pointer-events:none;
+  width:340px;height:220px;border-radius:14px;overflow:hidden;
+  opacity:0;transform:scale(.94);transition:opacity .25s, transform .25s;
+  z-index:40;box-shadow:0 30px 60px rgba(0,0,0,0.5);border:1px solid var(--line);
+}
+.work-preview img{width:100%;height:100%;object-fit:cover;}
+.work-row.extra-item{
+  opacity:0;transform:translateY(16px);
+  transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.work-row.extra-item.reveal-in{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .work-preview{display:none;}
+  .work-row{grid-template-columns:36px 1fr;row-gap:8px;}
+  .work-meta{grid-column:1/-1;justify-content:flex-start;text-align:left;max-width:none;}
 }
 
-.btn-one::before {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    left: -50%;
-    top: -50%;
+/* ---- more work grid ---- */
+.more-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;}
+.more-item{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--surface);cursor:zoom-in;}
+.more-item .thumb{width:100%;height:210px;background:#0e0e10;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.more-item .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+.more-item:hover .thumb img{transform:scale(1.05);}
+.more-item .cap{padding:12px 14px;font-size:13px;color:var(--muted);}
 
-    background: conic-gradient(
-        transparent 0deg,
-        transparent 250deg,
-        #ccfc10 300deg,
-        #ccfc10 330deg,
-        transparent 360deg
-    );
+/* ---- lightbox ---- */
+.lightbox{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(6,6,7,0.92);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+  padding:40px 24px;
+}
+.lightbox.open{opacity:1;pointer-events:auto;}
+.lightbox-inner{
+  position:relative;max-width:min(1100px,92vw);max-height:88vh;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  transform:scale(.94);transition:transform .3s ease;
+}
+.lightbox.open .lightbox-inner{transform:scale(1);}
+.lightbox-inner img{
+  max-width:100%;max-height:76vh;object-fit:contain;
+  border-radius:14px;border:1px solid var(--line);
+  box-shadow:0 40px 90px rgba(0,0,0,0.6);background:#0e0e10;
+}
+.lightbox-cap{color:var(--muted);font-size:14px;text-align:center;}
+.lightbox-close{
+  position:absolute;top:-52px;right:0;
+  width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(19,19,22,0.85);
+  color:var(--text);font-size:19px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:.25s;
+}
+.lightbox-close:hover{background:var(--lime);color:#0a0a0b;border-color:var(--lime);transform:rotate(90deg);}
+.lightbox-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(19,19,22,0.85);
+  color:var(--text);font-size:20px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:.25s;
+}
+.lightbox-nav:hover{border-color:var(--cyan);color:var(--cyan);}
+.lightbox-prev{left:-60px;}
+.lightbox-next{right:-60px;}
+@media(max-width:768px){
+  .lightbox-close{top:-46px;right:0;width:38px;height:38px;}
+  .lightbox-prev{left:8px;}
+  .lightbox-next{right:8px;}
+  .lightbox-nav{width:38px;height:38px;background:rgba(10,10,11,0.7);}
+}
+.filter-btn{
+  padding:9px 20px;border-radius:100px;font-size:13px;border:1px solid var(--line);color:var(--muted);
+  transition:.25s;background:transparent;
+}
+.filter-btn.active,.filter-btn:hover{background:var(--text);color:#0a0a0b;border-color:var(--text);}
+.hidden-item{display:none !important;}
 
-    opacity: 0;
-    z-index: -2;
+.toggle-more {
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #cafc13;
+    padding: 10px 38px;
+    border-radius: 36px;
 }
+.toggle-more i{transition:transform .35s ease;}
 
-.btn-one::after {
-    content: "";
-    position: absolute;
-    inset: 2px;
-    background: #0c0c0c;
-    z-index: -1;
-    border-radius: 100px;
+/* smooth reveal for extra "show more" items */
+.more-item.extra-item{
+  opacity:0;transform:translateY(18px) scale(.98);
+  transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1);
 }
+.more-item.extra-item.reveal-in{opacity:1;transform:translateY(0) scale(1);}
 
-/* HOVER */
-.btn-one:hover::before {
-    opacity: 1;
-    animation: spinBorder 1.5s linear infinite;
-}
+/* ---- about ---- */
+.skill-pill{border:1px solid var(--line);padding:9px 16px;border-radius:100px;font-size:13px;color:var(--muted);}
+.counter-card{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--surface);}
+.counter-card h3{font-size:32px;font-weight:700;}
+.counter-card p{color:var(--muted);font-size:13px;margin-top:4px;}
 
-.btn-one:hover {
-    border-color: transparent;
-    box-shadow: 0 0 25px rgba(204, 252, 16, 0.15);
+/* ---- contact ---- */
+/* .contact-card{
+  border:1px solid var(--line);border-radius:24px;padding:56px;
+  background:radial-gradient(circle at top left, rgba(44,211,247,0.08), transparent 60%), var(--surface);
 }
+.contact-input{
+  width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);
+  padding:14px 2px;color:var(--text);font-size:15px;transition:.25s;
+}
+.contact-input:focus{outline:none;border-color:var(--cyan);}
+.contact-input::placeholder{color:var(--muted);} */
 
-@keyframes spinBorder {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+/* mobile nav */
+.mobile-menu{
+  position:fixed;top:0;right:-100%;width:78%;max-width:320px;height:100vh;
+  background:#0d0d0f;border-left:1px solid var(--line);z-index:60;
+  display:flex;flex-direction:column;gap:26px;padding:100px 34px;transition:right .35s;
 }
-
-.mgsparent {
-    position: relative;
-}
-img.mgs {
-    position: absolute;
-    width: 41%;
-    right: 0px;
-    left: 715px;
-    top: 62px;
-    transform: rotate(
-341deg);
-}
-span.featured {
-    background: linear-gradient(90deg, #26d1ff, #d7ff00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-.collsapse {
-    background: #2b2b2b;
-    width: 53%;
-    margin: auto;
-    padding: 15px;
-    border-radius: 100px;
-}
-/* hover css */
-    </style>
+.mobile-menu.open{right:0;}
+.mobile-menu a{font-size:20px;font-family:'Space Grotesk',sans-serif;}
+</style>
 </head>
 
-<body class="bg-[#0c0c0c] text-white overflow-x-hidden">
+<body class="bg-[#0a0a0b] text-white">
 
 <!-- ================= NAVBAR ================= -->
-
 <header class="fixed top-0 left-0 w-full z-50 nav-glass">
-
-    <div class="max-w-7xl mx-auto px-6">
-
-        <div class="flex items-center justify-between h-20">
-
-            <a href="#" class="text-3xl font-black tracking-widest">
-                GURPREET SINGH
-            </a>
-
-            <nav class="hidden lg:flex items-center gap-10">
-
-                <a href="#home" class="menu-link">Home</a>
-
-                <a href="#portfolio" class="menu-link">Portfolio</a>
-
-                <a href="#about" class="menu-link">About</a>
-
-                <!-- <a href="#contact" class="menu-link">Contact</a> -->
-
-            </nav>
-
-            <button id="menuBtn" class="lg:hidden text-3xl">
-                <i class="ri-menu-3-line"></i>
-            </button>
-
-        </div>
-
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
+      <a href="#home" class="text-xl font-bold tracking-wide display">GURPREET SINGH</a>
+      <nav class="hidden lg:flex items-center gap-10">
+        <a href="#home" class="menu-link">Home</a>
+        <a href="#work" class="menu-link">Work</a>
+        <a href="#about" class="menu-link">About</a>
+        <!-- <a href="#contact" class="menu-link">Contact</a> -->
+      </nav>
+      <a href="tel:+91 9988775684" class="hidden lg:inline-flex btn-outline !py-2.5 !px-6 !text-xs">Let's talk</a>
+     
+      <button id="menuBtn" class="lg:hidden text-2xl"><i class="ri-menu-3-line"></i></button>
     </div>
-
+  </div>
 </header>
 
-<!-- ================= MOBILE MENU ================= -->
-
 <div id="mobileMenu" class="mobile-menu">
-
-    <a href="#home">Home</a>
-
-    <a href="#portfolio">Portfolio</a>
-
-    <a href="#about">About</a>
-
-    <!-- <a href="#contact">Contact</a> -->
-
+  <a href="#home">Home</a>
+  <a href="#work">Work</a>
+  <a href="#about">About</a>
+  <!-- <a href="#contact">Contact</a> -->
 </div>
 
 <!-- ================= HERO ================= -->
+<section id="home" class="relative min-h-screen flex items-center pt-32 pb-16">
+  <div class="hero-bg"></div>
+  <div class="grain"></div>
+  <p class="hero-bigtype">GURPREET SINGH</p>
+  <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-[1.05fr_0.95fr] gap-16 items-center">
 
-<section id="home" class="relative min-h-screen flex items-center">
+    <div>
+      <span class="avail-badge mb-8"><span class="avail-dot"></span> Open to freelance &amp; full‑time roles</span>
 
-    <div class="hero-bg"></div>
+      <h1 class="display font-semibold leading-[0.98]" style="font-size:clamp(40px,6vw,76px);">
+        I design brands<br>
+        <span class="grad">people remember.</span>
+      </h1>
+      <p class="max-w-lg mt-8 text-gray-400 leading-8 text-lg">
+        Three years building logos, brand systems and product interfaces —
+        from Shopify storefronts to full UI/UX case studies for founders and studios worldwide.
+      </p>
+      <div class="mt-11 flex gap-5 flex-wrap">
+        <a href="#work" class="btn-primary">View Selected Work <i class="ri-arrow-right-down-line"></i></a>
+        <a href="#contact" class="btn-outline">Start a Project</a>
+      </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <!-- <div class="mgsparent rotate-image">
-        <img src="MGSFIROZI.png" alt="" class="mgs" srcset="">
-    </div> -->
-        
-
-        <p class="uppercase tracking-[8px] text-gray-400">
-            Graphic & UI/UX
-        </p>
-
-        <h1 class="hero-title mt-6">
-
-            My <br>
-
-            Portfolio
-
-        </h1>
-
-        <p class="max-w-xl mt-8 text-gray-300 leading-8">
-
-            Creating modern logos, branding,
-            banners, posters and digital experiences
-            with premium visual design.
-
-        </p>
-
-        <div class="mt-12 flex gap-5 flex-wrap">
-
-            <a href="#portfolio" class="btn-one">
-
-                Explore Portfolio
-
-            </a>
-
-            <a href="#contact" class="btn-two">
-
-                Contact Me
-
-            </a>
-
-        </div>
-
+      <div class="mt-14 flex items-center gap-4 text-xs text-gray-500 uppercase tracking-wider">
+        <span>Trusted tools</span>
+        <span class="w-8 h-px bg-white/15"></span>
+        <span class="text-gray-400 normal-case tracking-normal">Figma · Shopify · WordPress · Tailwind</span>
+      </div>
     </div>
 
+    <div class="hero-visual hidden md:block">
+      <div class="hero-photo-frame hp-1">
+        <img src="https://guriportfoliodesign.vercel.app/vivifarm.png" alt="Vivi Farm UI design preview">
+      </div>
+      <div class="hero-photo-frame hp-2">
+        <img src="https://guriportfoliodesign.vercel.app/medisyncai.com.png" alt="Medisync AI UI design preview">
+      </div>
+
+      <div class="float-card fc-1">
+        <div class="ic"><i class="ri-briefcase-4-line"></i></div>
+        <div><div class="num">80+</div><div class="lbl">Clients served</div></div>
+      </div>
+      <div class="float-card fc-2">
+        <div class="ic"><i class="ri-stack-line"></i></div>
+        <div><div class="num">150+</div><div class="lbl">Projects shipped</div></div>
+      </div>
+      <div class="float-card fc-3">
+        <div class="ic"><i class="ri-time-line"></i></div>
+        <div><div class="num">3+</div><div class="lbl">Years practice</div></div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <!-- ================= FEATURED ================= -->
-
-<section class="py-32">
-
-    <div class="max-w-7xl mx-auto px-6">
-
-        <div class="flex justify-between items-center mb-16">
-
-            <h2 class="section-title ">
-
-                Featured <span class="featured" >Project</span>
-
-            </h2>
-
-            <span class="text-gray-500">
-
-                2026 Collection
-
-            </span>
-
-        </div>
-
-        <div class="featured-card">
-
-            <img src="vivifarm.png">
-
-            <div class="featured-overlay">
-
-                <h3>Website UI/UX Design</h3>
-
-                <p>
-
-                    Branding • Logo
-
-                </p>
-
-            </div>
-
-        </div>
-
+<section class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-between items-end mb-10 flex-wrap gap-4">
+      <div>
+        <p class="eyebrow mb-3">Latest release</p>
+        <h2 class="section-title">Featured <span class="grad">project</span></h2>
+      </div>
+      <span class="text-gray-500 text-sm">Vivi Farm — Shopify · Figma · UI Design</span>
     </div>
-
+    <a href="https://www.figma.com/design/eH0hr52IehKxG88KJ2ZMxm/Untitled--Copy-?node-id=376-13&t=R0esl2OhbZnEfaxv-0" target="_blank" class="featured-card block group">
+      <img src="https://guriportfoliodesign.vercel.app/vivifarm.png" alt="Vivi Farm — Shopify e-commerce UI design">
+      <div class="featured-overlay">
+        <h3 class="text-2xl md:text-3xl font-semibold display">Vivi Farm — E‑commerce UI/UX</h3>
+        <p class="text-gray-300 mt-2 max-w-lg text-sm">A full storefront design system for a farm-to-table Shopify brand — product pages, cart flow and brand-consistent components.</p>
+      </div>
+    </a>
+  </div>
 </section>
 
-<!-- ================= FILTERS ================= -->
+<!-- ================= SELECTED WORK (editorial index) ================= -->
+<section id="work" class="py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="eyebrow mb-3">Selected work</p>
+    <h2 class="section-title mb-4">Case studies &amp; UI/UX design</h2>
+    <p class="text-gray-500 max-w-lg mb-10">Hover a project to preview it. Click to open the full design file.</p>
 
-<section id="portfolio" class="py-10">
-
-    <div class="max-w-7xl mx-auto px-6">
-
-        <div class="flex flex-wrap gap-4 justify-center collsapse">
-
-            <button class="filter-btn active" data-filter="all">
-
-                All
-
-            </button>
-            <button class="filter-btn" data-filter="ui">
-
-                UI/UX
-
-            </button>
-            
-            <button class="filter-btn" data-filter="banner">
-
-                Banner
-
-            </button>
-
-            <button class="filter-btn" data-filter="logo">
-
-                Logo
-
-            </button>
-
-
-            <button class="filter-btn" data-filter="poster">
-
-                Poster
-
-            </button>
-
-            <!-- <button class="filter-btn" data-filter="branding">
-
-                Branding
-
-            </button> -->
-
-            
-
-        </div>
-
+    <div id="workList">
+      <!-- rows injected via data below -->
     </div>
 
+    <div class="text-center mt-6">
+      <span class="toggle-more" id="workMoreBtn">Show more work <i class="ri-arrow-down-s-line" id="workMoreIcon"></i></span>
+    </div>
+  </div>
 </section>
 
-<!-- ================= PORTFOLIO GRID ================= -->
-
-<section class="pb-32">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="portfolio-grid">
-
-<!-- CARD -->
-
-<div class="portfolio-item branding">
-
-<img src="cengencebrochure.png">
-
-<div class="portfolio-content">
-
-<h4>Celegence Brochure</h4>
-
-<span>Figma</span>
-
-</div>
-
-</div>
-
-
-
-<div class="portfolio-item poster">
-
-<img src="banner/A8.jpg">
-
-<div class="portfolio-content">
-
-<h4>Grow Business</h4>
-
-<span>Poster</span>
-
-</div>
-
-</div>
-<div class="portfolio-item banner">
-
-<img src="websitead.png">
-
-<div class="portfolio-content">
-
-<h4>Sale Banner</h4>
-
-<span>Banner</span>
-
-</div>
-
-</div>
-<div class="portfolio-item logo">
-
-<img src="Pudgie&Pals.png">
-
-<div class="portfolio-content">
-
-<h4>Pudgie & Pulse</h4>
-
-<span>Photoshop</span>
-
-</div>
-
-</div>
-
-<div class="portfolio-item logo">
-
-<img src="logos/B3.png">
-
-<div class="portfolio-content">
-
-<h4>Logo</h4>
-
-<span>Photoshop</span>
-
-</div>
-
-</div>
-<div class="portfolio-item logo">
-
-<img src="logos/B4.png">
-
-<div class="portfolio-content">
-
-<h4>Logo</h4>
-
-<span>Photoshop</span>
-
-</div>
-
-</div>
-<div class="portfolio-item logo">
-
-<img src="logos/B1.png">
-
-<div class="portfolio-content">
-
-<h4>Logo</h4>
-
-<span>Photoshop</span>
-
-</div>
-
-</div>
-<div class="portfolio-item logo">
-
-<img src="logos/B2.png">
-
-<div class="portfolio-content">
-
-<h4>Logo</h4>
-
-<span>Photoshop</span>
-
-</div>
-
-</div>
-
-<div class="portfolio-item logo">
-
-<img src="logos/B5.png">
-
-<div class="portfolio-content">
-
-<h4>Logo</h4>
-
-<span>Photoshop</span>
-
-</div>
-
-</div>
-<div class="portfolio-item logo">
-
-<img src="logos/B6.png">
-
-<div class="portfolio-content">
-
-<h4>Logo</h4>
-
-<span>Photoshop</span>
-
-</div>
-
-</div>
-<div class="portfolio-item logo">
-
-<img src="sub.png">
-
-<div class="portfolio-content">
-
-<h4>Music Logo</h4>
-
-<span>Logo Design</span>
-
-</div>
-
-</div>
-
-
-<div class="portfolio-item banner">
-
-<img src="AEQ.jpg   ">
-
-<div class="portfolio-content">
-
-<h4>Web Banner</h4>
-
-<span>Banner</span>
-
-</div>
-
-</div>
-<div class="portfolio-item banner">
-    <img src="banner/A17.png">
-    <div class="portfolio-content">
-        <h4>Social Media Post</h4>
-        <span>Photoshop work</span>
-    </div>
-</div>
-<div class="portfolio-item banner">
-    <img src="groww.jpg">
-    <div class="portfolio-content">
-        <h4>Social Media Post</h4>
-        <span>Photoshop work</span>
-    </div>
-</div>
-<div class="portfolio-item banner">
-    <img src="banner/A1.jpg">
-    <div class="portfolio-content">
-        <h4>Social media post</h4>
-        <span>Photoshop work</span>
-    </div>
-</div>
-<div class="portfolio-item banner">
-    <img src="banner/A7.png">
-    <div class="portfolio-content">
-        <h4>Social media post</h4>
-        <span>Photoshop work</span>
-    </div>
-</div>
-<div class="portfolio-item banner">
-    <img src="banner/A12.jpg">
-    <div class="portfolio-content">
-        <h4>Janmashtmi Banner</h4>
-        <span>Photoshop work</span>
-    </div>
-</div>
-<div class="portfolio-item banner">
-    <img src="banner/A25.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A26.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A27.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A2.png">
-    <div class="portfolio-content">
-        <h4>Social media post</h4>
-        <span>Photoshop work</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A3.jpg">
-    <div class="portfolio-content">
-        <h4>Social media post</h4>
-        <span>Photoshop work</span>
-    </div>
-</div>
-
-
-
-<div class="portfolio-item banner">
-    <img src="banner/A10.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A11.png">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-
-
-<div class="portfolio-item banner">
-    <img src="banner/A13.png">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A14.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A15.png">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A16.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-
-
-<div class="portfolio-item banner">
-    <img src="banner/A18.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A19.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A20.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A21.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A22.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A23.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A24.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-
-
-<div class="portfolio-item banner">
-    <img src="banner/A28.jpeg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A29.jpeg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-<div class="portfolio-item banner">
-    <img src="banner/A4.png">
-    <div class="portfolio-content">
-        <h4>Social media post</h4>
-        <span>Photoshop work</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A5.jpeg">
-    <div class="portfolio-content">
-        <h4>Social media post</h4>
-        <span>Photoshop work</span>
-    </div>
-</div>
-
-<div class="portfolio-item banner">
-    <img src="banner/A6.jpg">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-
-
-
-
-<div class="portfolio-item banner">
-    <img src="banner/A9.png">
-    <div class="portfolio-content">
-        <h4>Web Banner</h4>
-        <span>Banner</span>
-    </div>
-</div>
-
-
-<div class="portfolio-item ui">
-
-<img src="medisyncai.com.png">
-
-<div class="portfolio-content">
-
-<h4><a href="https://medisyncai.com/" target="_blank">Medisync AI</a></h4>
-
-<span>HTML | CSS | Figma | UI Design</span>
-
-</div>
-
-</div>
-<div class="portfolio-item ui">
-
-    <img src="chamundi.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/FBt2JMwUEToqrmmN1N3FCV/E-Commerce-design?m=auto&t=W57N16XSyWIB1isO-6" target="_blank">chamundi</a></h4>
-    
-    <span>Shopify | Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="vivifarm.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/eH0hr52IehKxG88KJ2ZMxm/Untitled--Copy-?node-id=376-13&t=R0esl2OhbZnEfaxv-0" target="_blank">Vivi Farm</a></h4>
-    
-    <span>Shopify | Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="hindustanasrologyone.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/72nsP0bniEImPGqZBimsAZ/Untitled?node-id=0-1&p=f&t=fmaUKjbMpKmBUndF-0" target="_blank">Bitavolt</a></h4>
-    
-    <span>Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="Bitavolt-2.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/gA0I0V2Z9J8E5sIUc2wOQA/Untitled?node-id=0-1&p=f&t=HtMus3Vsxk7ZbTGZ-0" target="_blank">Bitavolt</a></h4>
-    
-    <span>Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="THEWAYA2.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/sSarJzEmmRVXS4mXOBUP9I/Untitled?node-id=185-2&t=9MnT347HRALYCVVX-0" target="_blank">THE WAYA</a></h4>
-    
-    <span>Tailwind CSS | Figma | UI Design</span>
-    
-    </div>
-    
+<!-- ================= MORE WORK (grid) ================= -->
+<section class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-between items-end mb-10 flex-wrap gap-4">
+      <div>
+        <p class="eyebrow mb-3">Archive</p>
+        <h2 class="section-title">Branding, logos &amp; banners</h2>
+      </div>
     </div>
 
-<div class="portfolio-item ui">
-
-    <img src="Ellebeline.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/6wsxEBhWQX8AM7wqrKvCkS/Ecommerce-design-ellibiline?node-id=94-60&t=CqaXcSQLzX43wXvB-0" target="_blank">Ellebeline</a></h4>
-    
-    <span>Wordpress | Figma | UI Design</span>
-    
+    <div class="flex flex-wrap gap-3 mb-10">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="logo">Logo</button>
+      <button class="filter-btn" data-filter="banner">Banner</button>
+      <button class="filter-btn" data-filter="poster">Poster</button>
     </div>
-    
+
+    <div class="more-grid" id="moreGrid">
+      <div class="more-item logo"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/sub.png" alt="Sub — music logo design"></div><div class="cap">Sub — Music Logo</div></div>
+      <div class="more-item logo"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/Pudgie&Pals.png" alt="Pudgie and Pals logo"></div><div class="cap">Pudgie &amp; Pals — Logo</div></div>
+      <div class="more-item logo"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/logos/B3.png" alt="Logo mark B3"></div><div class="cap">Connect Health</div></div>
+      <div class="more-item logo"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/logos/B4.png" alt="Logo mark B4"></div><div class="cap">Medisyncai</div></div>
+      <div class="more-item logo"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/logos/B1.png" alt="Logo mark B1"></div><div class="cap">UDC</div></div>
+      <div class="more-item logo"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/logos/B2.png" alt="Logo mark B2"></div><div class="cap">The Healthy Weight Center</div></div>
+      <div class="more-item poster"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A8.jpg" alt="Grow Business poster"></div><div class="cap">Grow Business — Poster</div></div>
+      <div class="more-item banner"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/websitead.png" alt="Sale banner design"></div><div class="cap">Sale Banner</div></div>
+      <div class="more-item banner"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A12.jpg" alt="Janmashtami festival banner"></div><div class="cap">Janmashtami Banner</div></div>
+      <div class="more-item banner"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A17.png" alt="Social media post design"></div><div class="cap">Social Media Post</div></div>
+      <div class="more-item banner"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/AEQ.jpg" alt="Web banner design"></div><div class="cap">Web Banner</div></div>
+      <div class="more-item banner"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/groww.jpg" alt="Social media post design"></div><div class="cap">Social Media Post</div></div>
+
+      <!-- extra items, hidden until "Show more work" is clicked -->
+      <div class="more-item logo extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/logos/B5.png" alt="Logo mark B5"></div><div class="cap">Logo Mark 05</div></div>
+      <div class="more-item logo extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/logos/B6.png" alt="Logo mark B6"></div><div class="cap">Logo Mark 06</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A1.jpg" alt="Social media post design"></div><div class="cap">Social Media Post</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A2.png" alt="Social media post design"></div><div class="cap">Social Media Post</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A3.jpg" alt="Social media post design"></div><div class="cap">Social Media Post</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A4.png" alt="Social media post design"></div><div class="cap">Social Media Post</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A6.jpg" alt="Web banner design"></div><div class="cap">Web Banner</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A7.png" alt="Social media post design"></div><div class="cap">Social Media Post</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A9.png" alt="Web banner design"></div><div class="cap">Web Banner</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A10.jpg" alt="Web banner design"></div><div class="cap">Web Banner</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A11.png" alt="Web banner design"></div><div class="cap">Web Banner</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A13.png" alt="Web banner design"></div><div class="cap">Web Banner</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A14.jpg" alt="Web banner design"></div><div class="cap">Web Banner</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A25.jpg" alt="Web banner design"></div><div class="cap">Web Banner</div></div>
+      <div class="more-item banner extra-item hidden-item"><div class="thumb"><img src="https://guriportfoliodesign.vercel.app/banner/A26.jpg" alt="Web banner design"></div><div class="cap">Web Banner</div></div>
     </div>
-    <div class="portfolio-item ui">
 
-        <img src="INFRAOPTICS.png">
-        
-        <div class="portfolio-content">
-        
-        <h4><a href="https://infraoptics.au/" target="_blank">INFRAOPTICS</a></h4>
-        
-        <span>React | Tailwind CSS | Figma | UI Design</span>
-        
-        </div>
-        
-        </div>
-<div class="portfolio-item ui">
-
-    <img src="Chrismas.jpg">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/fsVsS7xlSNrhIiLupEJnYc/Untitled?node-id=50-2&t=Z2MiUTELCor1E8V3-0" target="_blank">NorthnFluffs</a></h4>
-    
-    <span>Wordpress | Figma | UI Design</span>
-    
+    <div class="text-center mt-10">
+      <span class="toggle-more" id="showMoreBtn">Show more work <i class="ri-arrow-down-s-line" id="showMoreIcon"></i></span>
     </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="muuns.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/fVvvJAdjJ6qtxPAJdSnwVV/Munns?node-id=3-2&t=va9JbFIlMYrotP0F-0" target="_blank">NorthnFluffs</a></h4>
-    
-    <span>Wordpress | Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="youstable.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/R5gYFhCDogdSwk0ipcajPG/Youstable?node-id=123-788&t=foZikMwtT7OnerhK-0" target="_blank">Youstable</a></h4>
-    
-    <span>Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="KIDZSPORTWORLD.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/XfuMHEv8RX3IVw3TqnGV3L/Untitled?node-id=1-2&t=Zp96WGqxOLcoW3pE-0" target="_blank">Kidz Sport World</a></h4>
-    
-    <span>Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="SkincareMockup.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/sVbw1zz8lba4eUUGJJ9mrO/Untitled?node-id=691-8727&t=cPMU5N4EGGs11pIH-0" target="_blank">MenRoot</a></h4>
-    
-    <span>Shopify | Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="THEONTARIO.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/yAIPSebQ0veIQdC1k5Kuph/The-Ontorio?node-id=0-1&p=f&t=dz3DuRlQwQKjuTun-0" target="_blank">The Ontario</a></h4>
-    
-    <span>HTML | CSS | Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="velara.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="https://www.figma.com/design/vaJmxxXUv58eDD1bMReDLf/Untitled?node-id=3-60&t=lxdewPxWU4SGAGVX-0" target="_blank">Velara</a></h4>
-    
-    <span>Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-<div class="portfolio-item ui">
-
-    <img src="TheMurielSuite.png">
-    
-    <div class="portfolio-content">
-    
-    <h4><a href="" target="_blank">Velara</a></h4>
-    
-    <span>Wordpress | Figma | UI Design</span>
-    
-    </div>
-    
-    </div>
-    <div class="portfolio-item ui">
-
-        <img src="ShipForma.png">
-        
-        <div class="portfolio-content">
-        
-        <h4><a href="https://www.figma.com/design/0EGAAa9szlBQtAvw2fYV6L/ShipForma-Mockup?node-id=131-118&t=3scXDahEVBJBOv6Q-0" target="_blank">ShipForma</a></h4>
-        
-        <span>Figma | Wordpress | UI Design</span>
-        
-        </div>
-        
-        </div>
-<div class="portfolio-item ui">
-
-<img src="Manisha.png">
-
-<div class="portfolio-content">
-
-<h4><a href="https://www.figma.com/design/NNQV0CY5BCUs4drtS0btRM/feninaag-properties?m=auto&t=W57N16XSyWIB1isO-6" target="_blank">Feninaag</a></h4>
-
-<span>Figma | UI Design</span>
-
-</div>
-
-</div>
-<div class="portfolio-item ui">
-
-<img src="Prefix.png">
-
-<div class="portfolio-content">
-
-<h4><a href="https://www.figma.com/design/AsLOIh5dNPUls0IdG2lxEO/it-company?node-id=0-3&t=WRvWmVrJA6PqzaAm-0" target="_blank">Prefix</a></h4>
-
-<span>Figma | UI Design</span>
-
-</div>
-
-</div>
-<div class="portfolio-item ui">
-
-<img src="Manishaa.png">
-
-<div class="portfolio-content">
-
-<h4><a href="https://www.figma.com/design/nWOCAlYwC7EmKFVWxmhCZE/Manisha-Developer-Mockup?m=auto&t=W57N16XSyWIB1isO-6" target="_blank">Manisha Developers</a></h4>
-
-<span>Figma | UI Design</span>
-
-</div>
-
-</div>
-
-
-
-
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
 <!-- ================= ABOUT ================= -->
+<section id="about" class="py-28">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20">
+    <div>
+      <p class="eyebrow mb-3">About</p>
+      <h2 class="section-title mb-8">A designer who ships <span class="grad">finished work.</span></h2>
+      <p class="text-gray-400 leading-8">
+        I'm Gurpreet — a graphic and UI/UX designer working with founders, studios and small
+        brands to turn rough ideas into shipped identities and products. My work spans
+        e‑commerce storefronts, SaaS interfaces, brand systems and the everyday visual
+        assets — banners, posters, social content — that keep a brand consistent.
+        I care about clarity first: every layout should tell a visitor exactly what to do next.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-10">
+        <span class="skill-pill">Figma</span>
+        <span class="skill-pill">Shopify</span>
+        <span class="skill-pill">Tailwind CSS</span>
+        <span class="skill-pill">WordPress</span>
+        <span class="skill-pill">React</span>
+        <span class="skill-pill">Photoshop</span>
+        <span class="skill-pill">Brand Identity</span>
+        <span class="skill-pill">UI/UX Design</span>
+      </div>
+    </div>
 
-<section id="about" class="py-32">
-
-<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
-
-<div>
-
-<h2 class="section-title">
-
-About Me
-
-</h2>
-
-<p class="mt-10 text-gray-400 leading-9">
-
-I create modern digital experiences,
-brand identities,
-creative advertising,
-social media campaigns,
-logo systems and
-premium visual designs.
-
-</p>
-
-</div>
-
-<div class="grid grid-cols-2 gap-8">
-
-<div class="counter-card">
-
-<h3>150+</h3>
-
-<p>Projects</p>
-
-</div>
-
-<div class="counter-card">
-
-<h3>80+</h3>
-
-<p>Clients</p>
-
-</div>
-
-<div class="counter-card">
-
-<h3>3+</h3>
-
-<p>Years</p>
-
-</div>
-
-<div class="counter-card">
-
-<h3>100%</h3>
-
-<p>Satisfaction</p>
-
-</div>
-
-</div>
-
-</div>
-
+    <div class="grid grid-cols-2 gap-6 content-start">
+      <div class="counter-card"><h3>150+</h3><p>Projects delivered</p></div>
+      <div class="counter-card"><h3>80+</h3><p>Clients worldwide</p></div>
+      <div class="counter-card"><h3>3+</h3><p>Years in practice</p></div>
+      <div class="counter-card"><h3>100%</h3><p>Satisfaction rate</p></div>
+    </div>
+  </div>
 </section>
 
 <!-- ================= CONTACT ================= -->
+<!-- <section id="contact" class="py-28">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="contact-card">
+      <p class="eyebrow mb-3">Get in touch</p>
+      <h2 class="section-title mb-4">Let's build something <span class="grad">worth showing.</span></h2>
+      <p class="text-gray-400 mb-12">Have a project in mind? Send the details below or reach me directly.</p>
 
-<!-- <section id="contact" class="py-32">
+      <form class="space-y-8" action="https://formsubmit.co/YOUR-EMAIL@example.com" method="POST">
+        <div class="grid md:grid-cols-2 gap-8">
+          <input type="text" name="name" placeholder="Your name" class="contact-input" required>
+          <input type="email" name="email" placeholder="Email address" class="contact-input" required>
+        </div>
+        <textarea name="message" rows="4" placeholder="Tell me about your project" class="contact-input" required></textarea>
+        <button type="submit" class="btn-primary">Send Message <i class="ri-send-plane-line"></i></button>
+      </form>
 
-<div class="max-w-3xl mx-auto px-6">
-
-<h2 class="section-title text-center">
-
-Let's Work Together
-
-</h2>
-
-<form class="mt-16 space-y-6">
-
-<input
-type="text"
-placeholder="Your Name"
-class="contact-input">
-
-<input
-type="email"
-placeholder="Email"
-class="contact-input">
-
-<textarea
-rows="6"
-placeholder="Message"
-class="contact-input"></textarea>
-
-<button
-class="btn-primary w-full">
-
-Send Message
-
-</button>
-
-</form>
-
-</div>
-
+      <div class="mt-14 pt-10 border-t border-white/10 flex flex-wrap gap-8 text-sm text-gray-400">
+        <a href="mailto:hello@gurpreetsingh.design" class="flex items-center gap-2 hover:text-white transition"><i class="ri-mail-line"></i> hello@gurpreetsingh.design</a>
+        <a href="https://www.behance.net/gurisingh18" target="_blank" class="flex items-center gap-2 hover:text-white transition"><i class="ri-behance-line"></i> Behance</a>
+        <a href="https://www.linkedin.com/in/gurpreet-singh-48782424b" target="_blank" class="flex items-center gap-2 hover:text-white transition"><i class="ri-linkedin-line"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
 </section> -->
 
 <!-- ================= FOOTER ================= -->
-
-<footer class="border-t border-white/10 py-12">
-
-<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-
-<p>
-
-© 2026 Creative Portfolio
-
-</p>
-
-<div class="flex gap-5 text-2xl">
-
-<a href="https://www.instagram.com/idesigner_your?igsh=MWxtY3IzaHVnOWExdQ==">
-
-<i class="ri-instagram-line"></i>
-
-</a>
-
-<a href="https://www.behance.net/gurisingh18">
-
-<i class="ri-behance-line"></i>
-
-</a>
-
-<a href="https://www.linkedin.com/in/gurpreet-singh-48782424b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">
-
-<i class="ri-linkedin-line"></i>
-
-</a>
-
-</div>
-
-</div>
-
+<footer class="border-t border-white/10 py-10">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <p class="text-gray-500 text-sm">© 2026 Gurpreet Singh — Creative Portfolio</p>
+    <div class="flex gap-5 text-xl text-gray-400">
+      <a href="https://www.instagram.com/idesigner_your" class="hover:text-white transition"><i class="ri-instagram-line"></i></a>
+      <a href="https://www.behance.net/gurisingh18" class="hover:text-white transition"><i class="ri-behance-line"></i></a>
+      <a href="https://www.linkedin.com/in/gurpreet-singh-48782424b" class="hover:text-white transition"><i class="ri-linkedin-line"></i></a>
+    </div>
+  </div>
 </footer>
 
+<!-- floating preview image for work list hover -->
+<div class="work-preview" id="workPreview"><img id="workPreviewImg" src=""></div>
+
 <!-- ================= LIGHTBOX ================= -->
-
-<div id="lightbox">
-
-<span id="closeLightbox">
-
-<i class="ri-close-large-line"></i>
-
-</span>
-
-<img id="lightboxImage">
-
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <span class="lightbox-close" id="lightboxClose"><i class="ri-close-line"></i></span>
+    <span class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="ri-arrow-left-s-line"></i></span>
+    <span class="lightbox-nav lightbox-next" id="lightboxNext"><i class="ri-arrow-right-s-line"></i></span>
+    <img id="lightboxImg" src="" alt="">
+    <p class="lightbox-cap" id="lightboxCap"></p>
+  </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script>
+// ---- selected work data (all UI/UX case studies from original portfolio) ----
+const projects = [
+  {name:"Medisync AI", tags:["HTML","CSS","Figma"], img:"https://guriportfoliodesign.vercel.app/medisyncai.com.png", url:"https://medisyncai.com/"},
+  {name:"Vivi Farm", tags:["Shopify","Figma"], img:"https://guriportfoliodesign.vercel.app/vivifarm.png", url:"https://www.figma.com/design/eH0hr52IehKxG88KJ2ZMxm/Untitled--Copy-?node-id=376-13&t=R0esl2OhbZnEfaxv-0"},
+  {name:"INFRAOPTICS", tags:["React","Tailwind"], img:"https://guriportfoliodesign.vercel.app/INFRAOPTICS.png", url:"https://infraoptics.au/"},
+  {name:"The Ontario", tags:["HTML","CSS","Figma"], img:"https://guriportfoliodesign.vercel.app/THEONTARIO.png", url:"https://www.figma.com/design/yAIPSebQ0veIQdC1k5Kuph/The-Ontorio?node-id=0-1&p=f&t=dz3DuRlQwQKjuTun-0"},
+  {name:"Bitavolt", tags:["Figma","UI Design"], img:"https://guriportfoliodesign.vercel.app/hindustanasrologyone.png", url:"https://www.figma.com/design/72nsP0bniEImPGqZBimsAZ/Untitled?node-id=0-1&p=f&t=fmaUKjbMpKmBUndF-0"},
+  {name:"Youstable", tags:["Figma","UI Design"], img:"https://guriportfoliodesign.vercel.app/youstable.png", url:"https://www.figma.com/design/R5gYFhCDogdSwk0ipcajPG/Youstable?node-id=123-788&t=foZikMwtT7OnerhK-0"},
+  {name:"Ellebeline", tags:["WordPress","Figma"], img:"https://guriportfoliodesign.vercel.app/Ellebeline.png", url:"https://www.figma.com/design/6wsxEBhWQX8AM7wqrKvCkS/Ecommerce-design-ellibiline?node-id=94-60&t=CqaXcSQLzX43wXvB-0"},
+  {name:"ShipForma", tags:["Figma","WordPress"], img:"https://guriportfoliodesign.vercel.app/ShipForma.png", url:"https://www.figma.com/design/0EGAAa9szlBQtAvw2fYV6L/ShipForma-Mockup?node-id=131-118&t=3scXDahEVBJBOv6Q-0"},
+  {name:"Kidz Sport World", tags:["Figma","UI Design"], img:"https://guriportfoliodesign.vercel.app/KIDZSPORTWORLD.png", url:"https://www.figma.com/design/XfuMHEv8RX3IVw3TqnGV3L/Untitled?node-id=1-2&t=Zp96WGqxOLcoW3pE-0"},
+  {name:"Manisha Developers", tags:["Figma","UI Design"], img:"https://guriportfoliodesign.vercel.app/Manishaa.png", url:"https://www.figma.com/design/nWOCAlYwC7EmKFVWxmhCZE/Manisha-Developer-Mockup?m=auto&t=W57N16XSyWIB1isO-6"},
 
-<script src="script.js"></script>
+  // extra case studies — revealed via "Show more work"
+  {name:"Chamundi", tags:["Shopify","Figma"], img:"https://guriportfoliodesign.vercel.app/chamundi.png", url:"https://www.figma.com/design/FBt2JMwUEToqrmmN1N3FCV/E-Commerce-design?m=auto&t=W57N16XSyWIB1isO-6"},
+  {name:"Bitavolt II", tags:["Figma","UI Design"], img:"https://guriportfoliodesign.vercel.app/Bitavolt-2.png", url:"https://www.figma.com/design/gA0I0V2Z9J8E5sIUc2wOQA/Untitled?node-id=0-1&p=f&t=HtMus3Vsxk7ZbTGZ-0"},
+  {name:"The Waya", tags:["Tailwind CSS","Figma"], img:"https://guriportfoliodesign.vercel.app/THEWAYA2.png", url:"https://www.figma.com/design/sSarJzEmmRVXS4mXOBUP9I/Untitled?node-id=185-2&t=9MnT347HRALYCVVX-0"},
+  {name:"NorthnFluffs — Christmas", tags:["WordPress","Figma"], img:"https://guriportfoliodesign.vercel.app/Chrismas.jpg", url:"https://www.figma.com/design/fsVsS7xlSNrhIiLupEJnYc/Untitled?node-id=50-2&t=Z2MiUTELCor1E8V3-0"},
+  {name:"NorthnFluffs — Munns", tags:["WordPress","Figma"], img:"https://guriportfoliodesign.vercel.app/muuns.png", url:"https://www.figma.com/design/fVvvJAdjJ6qtxPAJdSnwVV/Munns?node-id=3-2&t=va9JbFIlMYrotP0F-0"},
+  {name:"MenRoot", tags:["Shopify","Figma"], img:"https://guriportfoliodesign.vercel.app/SkincareMockup.png", url:"https://www.figma.com/design/sVbw1zz8lba4eUUGJJ9mrO/Untitled?node-id=691-8727&t=cPMU5N4EGGs11pIH-0"},
+  {name:"Velara", tags:["Figma","UI Design"], img:"https://guriportfoliodesign.vercel.app/velara.png", url:"https://www.figma.com/design/vaJmxxXUv58eDD1bMReDLf/Untitled?node-id=3-60&t=lxdewPxWU4SGAGVX-0"},
+  {name:"Feninaag", tags:["Figma","UI Design"], img:"https://guriportfoliodesign.vercel.app/Manisha.png", url:"https://www.figma.com/design/NNQV0CY5BCUs4drtS0btRM/feninaag-properties?m=auto&t=W57N16XSyWIB1isO-6"},
+  {name:"Prefix", tags:["Figma","UI Design"], img:"https://guriportfoliodesign.vercel.app/Prefix.png", url:"https://www.figma.com/design/AsLOIh5dNPUls0IdG2lxEO/it-company?node-id=0-3&t=WRvWmVrJA6PqzaAm-0"},
+];
+
+const MAIN_COUNT = 10;
+const list = document.getElementById('workList');
+projects.forEach((p, i) => {
+  const row = document.createElement('a');
+  row.href = p.url; row.target = "_blank";
+  row.className = "work-row" + (i >= MAIN_COUNT ? " extra-item hidden-item" : "");
+  row.dataset.img = p.img;
+  row.innerHTML = `
+    <span class="work-num">${String(i+1).padStart(2,'0')}</span>
+    <span class="work-name display">${p.name}</span>
+    <span class="work-meta">${p.tags.map(t=>`<span class="work-tag">${t}</span>`).join('')} <i class="ri-arrow-right-up-line"></i></span>
+  `;
+  list.appendChild(row);
+});
+
+// show more / show less — Selected Work list
+const workMoreBtn = document.getElementById('workMoreBtn');
+const workMoreIcon = document.getElementById('workMoreIcon');
+workMoreBtn.dataset.open = 'false';
+workMoreBtn.addEventListener('click', () => {
+  const nowOpen = workMoreBtn.dataset.open !== 'true';
+  workMoreBtn.dataset.open = nowOpen ? 'true' : 'false';
+  const extras = Array.from(document.querySelectorAll('#workList .work-row.extra-item'));
+
+  if (nowOpen) {
+    extras.forEach((row, i) => {
+      row.classList.remove('hidden-item');
+      row.style.transitionDelay = (i * 0.05) + 's';
+      void row.offsetWidth;
+      requestAnimationFrame(() => row.classList.add('reveal-in'));
+    });
+  } else {
+    extras.forEach((row, i) => {
+      row.style.transitionDelay = (i * 0.02) + 's';
+      row.classList.remove('reveal-in');
+    });
+    setTimeout(() => {
+      extras.forEach(row => { row.classList.add('hidden-item'); row.style.transitionDelay = '0s'; });
+    }, 400);
+  }
+
+  workMoreBtn.firstChild.textContent = nowOpen ? 'Show less work ' : 'Show more work ';
+  workMoreIcon.style.transform = nowOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+});
+
+// hover preview
+const preview = document.getElementById('workPreview');
+const previewImg = document.getElementById('workPreviewImg');
+document.querySelectorAll('.work-row').forEach(row => {
+  row.addEventListener('mousemove', e => {
+    preview.style.left = (e.clientX + 24) + 'px';
+    preview.style.top = (e.clientY - 110) + 'px';
+  });
+  row.addEventListener('mouseenter', () => {
+    previewImg.src = row.dataset.img;
+    preview.style.opacity = 1;
+    preview.style.transform = 'scale(1)';
+  });
+  row.addEventListener('mouseleave', () => {
+    preview.style.opacity = 0;
+    preview.style.transform = 'scale(.94)';
+  });
+});
+
+// filters for "more work"
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    const extrasOpen = showMoreBtn.dataset.open === 'true';
+
+    document.querySelectorAll('.more-item:not(.extra-item)').forEach(item => {
+      const matchesFilter = f === 'all' || item.classList.contains(f);
+      item.classList.toggle('hidden-item', !matchesFilter);
+    });
+
+    document.querySelectorAll('.more-item.extra-item').forEach(item => {
+      const matchesFilter = f === 'all' || item.classList.contains(f);
+      if (extrasOpen && matchesFilter) {
+        item.classList.remove('hidden-item');
+        requestAnimationFrame(() => item.classList.add('reveal-in'));
+      } else {
+        item.classList.remove('reveal-in');
+        item.classList.add('hidden-item');
+      }
+    });
+  });
+});
+
+// show more / show less work — smooth staggered fade + slide
+const showMoreBtn = document.getElementById('showMoreBtn');
+const showMoreIcon = document.getElementById('showMoreIcon');
+showMoreBtn.dataset.open = 'false';
+
+showMoreBtn.addEventListener('click', () => {
+  const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+  const nowOpen = showMoreBtn.dataset.open !== 'true';
+  showMoreBtn.dataset.open = nowOpen ? 'true' : 'false';
+  const extras = Array.from(document.querySelectorAll('.more-item.extra-item'))
+    .filter(item => activeFilter === 'all' || item.classList.contains(activeFilter));
+
+  if (nowOpen) {
+    extras.forEach((item, i) => {
+      item.classList.remove('hidden-item');
+      item.style.transitionDelay = (i * 0.045) + 's';
+      void item.offsetWidth; // force reflow so the transition actually plays
+      requestAnimationFrame(() => item.classList.add('reveal-in'));
+    });
+  } else {
+    extras.forEach((item, i) => {
+      item.style.transitionDelay = (i * 0.02) + 's';
+      item.classList.remove('reveal-in');
+    });
+    setTimeout(() => {
+      extras.forEach(item => {
+        item.classList.add('hidden-item');
+        item.style.transitionDelay = '0s';
+      });
+    }, 400);
+  }
+
+  showMoreBtn.firstChild.textContent = nowOpen ? 'Show less work ' : 'Show more work ';
+  showMoreIcon.style.transform = nowOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+
+  if (nowOpen) {
+    setTimeout(() => {
+      document.getElementById('moreGrid').scrollIntoView({behavior:'smooth', block:'nearest'});
+    }, 150);
+  }
+});
+
+// mobile menu
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+// ---- lightbox for Archive grid ----
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCap = document.getElementById('lightboxCap');
+const lightboxClose = document.getElementById('lightboxClose');
+const lightboxPrev = document.getElementById('lightboxPrev');
+const lightboxNext = document.getElementById('lightboxNext');
+let galleryItems = [];
+let galleryIndex = 0;
+
+function buildGallery(){
+  galleryItems = Array.from(document.querySelectorAll('.more-item')).map(item => ({
+    src: item.querySelector('img').src,
+    cap: item.querySelector('.cap').textContent.trim()
+  }));
+}
+
+function openLightbox(index){
+  buildGallery();
+  galleryIndex = index;
+  showGalleryImage();
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function showGalleryImage(){
+  const item = galleryItems[galleryIndex];
+  lightboxImg.src = item.src;
+  lightboxImg.alt = item.cap;
+  lightboxCap.textContent = item.cap;
+}
+function nextImage(){ galleryIndex = (galleryIndex + 1) % galleryItems.length; showGalleryImage(); }
+function prevImage(){ galleryIndex = (galleryIndex - 1 + galleryItems.length) % galleryItems.length; showGalleryImage(); }
+
+document.getElementById('moreGrid').addEventListener('click', (e) => {
+  const item = e.target.closest('.more-item');
+  if(!item) return;
+  buildGallery();
+  const visibleItems = Array.from(document.querySelectorAll('.more-item'));
+  const index = visibleItems.indexOf(item);
+  openLightbox(index);
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxNext.addEventListener('click', nextImage);
+lightboxPrev.addEventListener('click', prevImage);
+lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => {
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key === 'Escape') closeLightbox();
+  if(e.key === 'ArrowRight') nextImage();
+  if(e.key === 'ArrowLeft') prevImage();
+});
+</script>
 
 </body>
 </html>
