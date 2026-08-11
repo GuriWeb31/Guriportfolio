@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Creative Portfolio</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets">
+    <link rel="stylesheet" href="banner/">
+    
+    <style>
+        @media only screen and (min-width: 320px) and (max-width: 767px) {
+            a.text-3xl.font-black.tracking-widest {
+    font-size: 20px !important;
+}
+h1.hero-title.mt-6 {
+    margin-top: 12px;
+}
+a.btn-one {
+    width: 100% !important;
+}
+a.btn-two {
+    width: 100% !important;
+}
+.mt-12.flex.gap-5.flex-wrap {
+    margin-top: 18px;
+}
+br {
+    display: none;
+}
+p.max-w-xl.mt-8.text-gray-300.leading-8 {
+    margin-top: 10px !important;
+    line-height: 24px;
+}
+.min-h-screen {
+    min-height: auto;
+    padding-top: 135px;
+    padding-bottom: 70px;
+}
+.collsapse {
+    background: #2b2b2b;
+    width: 100% !important;
+    margin: auto;
+    padding: 15px;
+    border-radius: 20px !important;
+}
+        }
+        /* .portfolio-item img {
+    height: 420px;
+    object-position: center;
+    object-fit: cover;
+    transition: .7s;
+} */
+        h1.hero-title.mt-6 {
+    background: linear-gradient(90deg, #26d1ff, #d7ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, #2cd3f747, transparent 45%), radial-gradient(circle at bottom left, #00feff54, transparent 40%), #090909;
+}
+a.btn-one {
+    background: #fff;
+    padding: 15px;
+    width: 30%;
+    
+    text-align: center;
+    border-radius: 100px;
+      transition: 0.3s;
+}
+a.btn-two {
+    background: #fff;
+    padding: 15px;
+    width: 30%;
+    color: #000;
+    text-align: center;
+    border-radius: 100px;
+      transition: 0.3s;
+}
+a.btn-one:hover {
+   background: #000;
+}
+a.btn-two {
+    background: #2cd3f7;
+  
+}
+
+/* hover css */
+.btn-one {
+    position: relative;
+    display: inline-block;
+    padding: 14px 30px;
+    color: #fff;
+    text-decoration: none;
+    background: #0c0c0c;
+    border: 1px solid rgba(255,255,255,0.25);
+    overflow: hidden;
+    transition: 0.3s ease;
+    z-index: 1;
+}
+
+.btn-one::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    top: -50%;
+
+    background: conic-gradient(
+        transparent 0deg,
+        transparent 250deg,
+        #ccfc10 300deg,
+        #ccfc10 330deg,
+        transparent 360deg
+    );
+
+    opacity: 0;
+    z-index: -2;
+}
+
+.btn-one::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: #0c0c0c;
+    z-index: -1;
+    border-radius: 100px;
+}
+
+/* HOVER */
+.btn-one:hover::before {
+    opacity: 1;
+    animation: spinBorder 1.5s linear infinite;
+}
+
+.btn-one:hover {
+    border-color: transparent;
+    box-shadow: 0 0 25px rgba(204, 252, 16, 0.15);
+}
+
+@keyframes spinBorder {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.mgsparent {
+    position: relative;
+}
+img.mgs {
+    position: absolute;
+    width: 41%;
+    right: 0px;
+    left: 715px;
+    top: 62px;
+    transform: rotate(
+341deg);
+}
+span.featured {
+    background: linear-gradient(90deg, #26d1ff, #d7ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.collsapse {
+    background: #2b2b2b;
+    width: 53%;
+    margin: auto;
+    padding: 15px;
+    border-radius: 100px;
+}
+/* hover css */
+    </style>
+</head>
+
+<body class="bg-[#0c0c0c] text-white overflow-x-hidden">
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="fixed top-0 left-0 w-full z-50 nav-glass">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex items-center justify-between h-20">
+
+            <a href="#" class="text-3xl font-black tracking-widest">
+                GURPREET SINGH
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-10">
+
+                <a href="#home" class="menu-link">Home</a>
+
+                <a href="#portfolio" class="menu-link">Portfolio</a>
+
+                <a href="#about" class="menu-link">About</a>
+
+                <a href="#contact" class="menu-link">Contact</a>
+
+            </nav>
+
+            <button id="menuBtn" class="lg:hidden text-3xl">
+                <i class="ri-menu-3-line"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ================= MOBILE MENU ================= -->
+
+<div id="mobileMenu" class="mobile-menu">
+
+    <a href="#home">Home</a>
+
+    <a href="#portfolio">Portfolio</a>
+
+    <a href="#about">About</a>
+
+    <a href="#contact">Contact</a>
+
+</div>
+
+<!-- ================= HERO ================= -->
+
+<section id="home" class="relative min-h-screen flex items-center">
+
+    <div class="hero-bg"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- <div class="mgsparent rotate-image">
+        <img src="MGSFIROZI.png" alt="" class="mgs" srcset="">
+    </div> -->
+        
+
+        <p class="uppercase tracking-[8px] text-gray-400">
+            Graphic & UI/UX
+        </p>
+
+        <h1 class="hero-title mt-6">
+
+            My <br>
+
+            Portfolio
+
+        </h1>
+
+        <p class="max-w-xl mt-8 text-gray-300 leading-8">
+
+            Creating modern logos, branding,
+            banners, posters and digital experiences
+            with premium visual design.
+
+        </p>
+
+        <div class="mt-12 flex gap-5 flex-wrap">
+
+            <a href="#portfolio" class="btn-one">
+
+                Explore Portfolio
+
+            </a>
+
+            <a href="#contact" class="btn-two">
+
+                Contact Me
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURED ================= -->
+
+<section class="py-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex justify-between items-center mb-16">
+
+            <h2 class="section-title ">
+
+                Featured <span class="featured" >Project</span>
+
+            </h2>
+
+            <span class="text-gray-500">
+
+                2026 Collection
+
+            </span>
+
+        </div>
+
+        <div class="featured-card">
+
+            <img src="vivifarm.png">
+
+            <div class="featured-overlay">
+
+                <h3>Website UI/UX Design</h3>
+
+                <p>
+
+                    Branding • Logo
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FILTERS ================= -->
+
+<section id="portfolio" class="py-10">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex flex-wrap gap-4 justify-center collsapse">
+
+            <button class="filter-btn active" data-filter="all">
+
+                All
+
+            </button>
+            <button class="filter-btn" data-filter="ui">
+
+                UI/UX
+
+            </button>
+            
+            <button class="filter-btn" data-filter="banner">
+
+                Banner
+
+            </button>
+
+            <button class="filter-btn" data-filter="logo">
+
+                Logo
+
+            </button>
+
+
+            <button class="filter-btn" data-filter="poster">
+
+                Poster
+
+            </button>
+
+            <!-- <button class="filter-btn" data-filter="branding">
+
+                Branding
+
+            </button> -->
+
+            
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= PORTFOLIO GRID ================= -->
+
+<section class="pb-32">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="portfolio-grid">
+
+<!-- CARD -->
+
+<div class="portfolio-item branding">
+
+<img src="cengencebrochure.png">
+
+<div class="portfolio-content">
+
+<h4>Celegence Brochure</h4>
+
+<span>Figma</span>
+
+</div>
+
+</div>
+
+
+
+<div class="portfolio-item poster">
+
+<img src="banner/A8.jpg">
+
+<div class="portfolio-content">
+
+<h4>Grow Business</h4>
+
+<span>Poster</span>
+
+</div>
+
+</div>
+<div class="portfolio-item banner">
+
+<img src="websitead.png">
+
+<div class="portfolio-content">
+
+<h4>Sale Banner</h4>
+
+<span>Banner</span>
+
+</div>
+
+</div>
+<div class="portfolio-item logo">
+
+<img src="Pudgie&Pals.png">
+
+<div class="portfolio-content">
+
+<h4>Pudgie & Pulse</h4>
+
+<span>Photoshop</span>
+
+</div>
+
+</div>
+
+<div class="portfolio-item logo">
+
+<img src="logos/B3.png">
+
+<div class="portfolio-content">
+
+<h4>Logo</h4>
+
+<span>Photoshop</span>
+
+</div>
+
+</div>
+<div class="portfolio-item logo">
+
+<img src="logos/B4.png">
+
+<div class="portfolio-content">
+
+<h4>Logo</h4>
+
+<span>Photoshop</span>
+
+</div>
+
+</div>
+<div class="portfolio-item logo">
+
+<img src="logos/B1.png">
+
+<div class="portfolio-content">
+
+<h4>Logo</h4>
+
+<span>Photoshop</span>
+
+</div>
+
+</div>
+<div class="portfolio-item logo">
+
+<img src="logos/B2.png">
+
+<div class="portfolio-content">
+
+<h4>Logo</h4>
+
+<span>Photoshop</span>
+
+</div>
+
+</div>
+
+<div class="portfolio-item logo">
+
+<img src="logos/B5.png">
+
+<div class="portfolio-content">
+
+<h4>Logo</h4>
+
+<span>Photoshop</span>
+
+</div>
+
+</div>
+<div class="portfolio-item logo">
+
+<img src="logos/B6.png">
+
+<div class="portfolio-content">
+
+<h4>Logo</h4>
+
+<span>Photoshop</span>
+
+</div>
+
+</div>
+<div class="portfolio-item logo">
+
+<img src="sub.png">
+
+<div class="portfolio-content">
+
+<h4>Music Logo</h4>
+
+<span>Logo Design</span>
+
+</div>
+
+</div>
+
+
+<div class="portfolio-item banner">
+
+<img src="AEQ.jpg   ">
+
+<div class="portfolio-content">
+
+<h4>Web Banner</h4>
+
+<span>Banner</span>
+
+</div>
+
+</div>
+<div class="portfolio-item banner">
+    <img src="banner/A17.png">
+    <div class="portfolio-content">
+        <h4>Social Media Post</h4>
+        <span>Photoshop work</span>
+    </div>
+</div>
+<div class="portfolio-item banner">
+    <img src="groww.jpg">
+    <div class="portfolio-content">
+        <h4>Social Media Post</h4>
+        <span>Photoshop work</span>
+    </div>
+</div>
+<div class="portfolio-item banner">
+    <img src="banner/A1.jpg">
+    <div class="portfolio-content">
+        <h4>Social media post</h4>
+        <span>Photoshop work</span>
+    </div>
+</div>
+<div class="portfolio-item banner">
+    <img src="banner/A7.png">
+    <div class="portfolio-content">
+        <h4>Social media post</h4>
+        <span>Photoshop work</span>
+    </div>
+</div>
+<div class="portfolio-item banner">
+    <img src="banner/A12.jpg">
+    <div class="portfolio-content">
+        <h4>Janmashtmi Banner</h4>
+        <span>Photoshop work</span>
+    </div>
+</div>
+<div class="portfolio-item banner">
+    <img src="banner/A25.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A26.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A27.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A2.png">
+    <div class="portfolio-content">
+        <h4>Social media post</h4>
+        <span>Photoshop work</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A3.jpg">
+    <div class="portfolio-content">
+        <h4>Social media post</h4>
+        <span>Photoshop work</span>
+    </div>
+</div>
+
+
+
+<div class="portfolio-item banner">
+    <img src="banner/A10.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A11.png">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+
+
+<div class="portfolio-item banner">
+    <img src="banner/A13.png">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A14.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A15.png">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A16.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+
+
+<div class="portfolio-item banner">
+    <img src="banner/A18.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A19.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A20.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A21.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A22.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A23.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A24.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+
+
+<div class="portfolio-item banner">
+    <img src="banner/A28.jpeg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A29.jpeg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+<div class="portfolio-item banner">
+    <img src="banner/A4.png">
+    <div class="portfolio-content">
+        <h4>Social media post</h4>
+        <span>Photoshop work</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A5.jpeg">
+    <div class="portfolio-content">
+        <h4>Social media post</h4>
+        <span>Photoshop work</span>
+    </div>
+</div>
+
+<div class="portfolio-item banner">
+    <img src="banner/A6.jpg">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+
+
+
+
+<div class="portfolio-item banner">
+    <img src="banner/A9.png">
+    <div class="portfolio-content">
+        <h4>Web Banner</h4>
+        <span>Banner</span>
+    </div>
+</div>
+
+
+<div class="portfolio-item ui">
+
+<img src="medisyncai.com.png">
+
+<div class="portfolio-content">
+
+<h4><a href="https://medisyncai.com/" target="_blank">Medisync AI</a></h4>
+
+<span>HTML | CSS | Figma | UI Design</span>
+
+</div>
+
+</div>
+<div class="portfolio-item ui">
+
+    <img src="chamundi.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/FBt2JMwUEToqrmmN1N3FCV/E-Commerce-design?m=auto&t=W57N16XSyWIB1isO-6" target="_blank">chamundi</a></h4>
+    
+    <span>Shopify | Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="vivifarm.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/eH0hr52IehKxG88KJ2ZMxm/Untitled--Copy-?node-id=376-13&t=R0esl2OhbZnEfaxv-0" target="_blank">Vivi Farm</a></h4>
+    
+    <span>Shopify | Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="hindustanasrologyone.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/72nsP0bniEImPGqZBimsAZ/Untitled?node-id=0-1&p=f&t=fmaUKjbMpKmBUndF-0" target="_blank">Bitavolt</a></h4>
+    
+    <span>Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="Bitavolt-2.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/gA0I0V2Z9J8E5sIUc2wOQA/Untitled?node-id=0-1&p=f&t=HtMus3Vsxk7ZbTGZ-0" target="_blank">Bitavolt</a></h4>
+    
+    <span>Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="THEWAYA2.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/sSarJzEmmRVXS4mXOBUP9I/Untitled?node-id=185-2&t=9MnT347HRALYCVVX-0" target="_blank">THE WAYA</a></h4>
+    
+    <span>Tailwind CSS | Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+
+<div class="portfolio-item ui">
+
+    <img src="Ellebeline.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/6wsxEBhWQX8AM7wqrKvCkS/Ecommerce-design-ellibiline?node-id=94-60&t=CqaXcSQLzX43wXvB-0" target="_blank">Ellebeline</a></h4>
+    
+    <span>Wordpress | Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+    <div class="portfolio-item ui">
+
+        <img src="INFRAOPTICS.png">
+        
+        <div class="portfolio-content">
+        
+        <h4><a href="https://infraoptics.au/" target="_blank">INFRAOPTICS</a></h4>
+        
+        <span>React | Tailwind CSS | Figma | UI Design</span>
+        
+        </div>
+        
+        </div>
+<div class="portfolio-item ui">
+
+    <img src="Chrismas.jpg">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/fsVsS7xlSNrhIiLupEJnYc/Untitled?node-id=50-2&t=Z2MiUTELCor1E8V3-0" target="_blank">NorthnFluffs</a></h4>
+    
+    <span>Wordpress | Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="muuns.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/fVvvJAdjJ6qtxPAJdSnwVV/Munns?node-id=3-2&t=va9JbFIlMYrotP0F-0" target="_blank">NorthnFluffs</a></h4>
+    
+    <span>Wordpress | Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="youstable.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/R5gYFhCDogdSwk0ipcajPG/Youstable?node-id=123-788&t=foZikMwtT7OnerhK-0" target="_blank">Youstable</a></h4>
+    
+    <span>Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="KIDZSPORTWORLD.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/XfuMHEv8RX3IVw3TqnGV3L/Untitled?node-id=1-2&t=Zp96WGqxOLcoW3pE-0" target="_blank">Kidz Sport World</a></h4>
+    
+    <span>Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="SkincareMockup.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/sVbw1zz8lba4eUUGJJ9mrO/Untitled?node-id=691-8727&t=cPMU5N4EGGs11pIH-0" target="_blank">MenRoot</a></h4>
+    
+    <span>Shopify | Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="THEONTARIO.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/yAIPSebQ0veIQdC1k5Kuph/The-Ontorio?node-id=0-1&p=f&t=dz3DuRlQwQKjuTun-0" target="_blank">The Ontario</a></h4>
+    
+    <span>HTML | CSS | Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="velara.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="https://www.figma.com/design/vaJmxxXUv58eDD1bMReDLf/Untitled?node-id=3-60&t=lxdewPxWU4SGAGVX-0" target="_blank">Velara</a></h4>
+    
+    <span>Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+<div class="portfolio-item ui">
+
+    <img src="TheMurielSuite.png">
+    
+    <div class="portfolio-content">
+    
+    <h4><a href="" target="_blank">Velara</a></h4>
+    
+    <span>Wordpress | Figma | UI Design</span>
+    
+    </div>
+    
+    </div>
+    <div class="portfolio-item ui">
+
+        <img src="ShipForma.png">
+        
+        <div class="portfolio-content">
+        
+        <h4><a href="https://www.figma.com/design/0EGAAa9szlBQtAvw2fYV6L/ShipForma-Mockup?node-id=131-118&t=3scXDahEVBJBOv6Q-0" target="_blank">ShipForma</a></h4>
+        
+        <span>Figma | Wordpress | UI Design</span>
+        
+        </div>
+        
+        </div>
+<div class="portfolio-item ui">
+
+<img src="Manisha.png">
+
+<div class="portfolio-content">
+
+<h4><a href="https://www.figma.com/design/NNQV0CY5BCUs4drtS0btRM/feninaag-properties?m=auto&t=W57N16XSyWIB1isO-6" target="_blank">Feninaag</a></h4>
+
+<span>Figma | UI Design</span>
+
+</div>
+
+</div>
+<div class="portfolio-item ui">
+
+<img src="Prefix.png">
+
+<div class="portfolio-content">
+
+<h4><a href="https://www.figma.com/design/AsLOIh5dNPUls0IdG2lxEO/it-company?node-id=0-3&t=WRvWmVrJA6PqzaAm-0" target="_blank">Prefix</a></h4>
+
+<span>Figma | UI Design</span>
+
+</div>
+
+</div>
+<div class="portfolio-item ui">
+
+<img src="Manishaa.png">
+
+<div class="portfolio-content">
+
+<h4><a href="https://www.figma.com/design/nWOCAlYwC7EmKFVWxmhCZE/Manisha-Developer-Mockup?m=auto&t=W57N16XSyWIB1isO-6" target="_blank">Manisha Developers</a></h4>
+
+<span>Figma | UI Design</span>
+
+</div>
+
+</div>
+
+
+
+
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="py-32">
+
+<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+
+<div>
+
+<h2 class="section-title">
+
+About Me
+
+</h2>
+
+<p class="mt-10 text-gray-400 leading-9">
+
+I create modern digital experiences,
+brand identities,
+creative advertising,
+social media campaigns,
+logo systems and
+premium visual designs.
+
+</p>
+
+</div>
+
+<div class="grid grid-cols-2 gap-8">
+
+<div class="counter-card">
+
+<h3>150+</h3>
+
+<p>Projects</p>
+
+</div>
+
+<div class="counter-card">
+
+<h3>80+</h3>
+
+<p>Clients</p>
+
+</div>
+
+<div class="counter-card">
+
+<h3>3+</h3>
+
+<p>Years</p>
+
+</div>
+
+<div class="counter-card">
+
+<h3>100%</h3>
+
+<p>Satisfaction</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<!-- <section id="contact" class="py-32">
+
+<div class="max-w-3xl mx-auto px-6">
+
+<h2 class="section-title text-center">
+
+Let's Work Together
+
+</h2>
+
+<form class="mt-16 space-y-6">
+
+<input
+type="text"
+placeholder="Your Name"
+class="contact-input">
+
+<input
+type="email"
+placeholder="Email"
+class="contact-input">
+
+<textarea
+rows="6"
+placeholder="Message"
+class="contact-input"></textarea>
+
+<button
+class="btn-primary w-full">
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+
+</section> -->
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="border-t border-white/10 py-12">
+
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+
+<p>
+
+© 2026 Creative Portfolio
+
+</p>
+
+<div class="flex gap-5 text-2xl">
+
+<a href="https://www.instagram.com/idesigner_your?igsh=MWxtY3IzaHVnOWExdQ==">
+
+<i class="ri-instagram-line"></i>
+
+</a>
+
+<a href="https://www.behance.net/gurisingh18">
+
+<i class="ri-behance-line"></i>
+
+</a>
+
+<a href="https://www.linkedin.com/in/gurpreet-singh-48782424b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">
+
+<i class="ri-linkedin-line"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+
+<div id="lightbox">
+
+<span id="closeLightbox">
+
+<i class="ri-close-large-line"></i>
+
+</span>
+
+<img id="lightboxImage">
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
